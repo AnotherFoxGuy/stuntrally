@@ -30,3 +30,7 @@ locale/translation*
 .tx
 *.pot
 sr.log
+
+cmake-build-*/
+
+.idea/

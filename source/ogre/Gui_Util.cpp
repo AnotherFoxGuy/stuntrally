@@ -22,7 +22,7 @@
 #include <MyGUI_ImageBox.h>
 #include <MyGUI_MultiListBox.h>
 #include <MyGUI_PolygonalSkin.h>
-#include "../tinyxml/tinyxml2.h"
+#include "tinyxml2.h"
 using namespace std;
 using namespace Ogre;
 using namespace MyGUI;

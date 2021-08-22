@@ -150,12 +150,8 @@ public:
 	Txt txLoadBig, txLoad;
 	int barSizeX, barSizeY;
 
-	
-	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-	MyGUI::OgreD3D11Platform* mPlatform;
-	#else
+
 	MyGUI::OgrePlatform* mPlatform;
-	#endif
 	
 	///  main menu  // pSet->inMenu
 	WP mWndMainPanels[ciMainBtns];
