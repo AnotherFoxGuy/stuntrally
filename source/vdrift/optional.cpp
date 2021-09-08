@@ -10,12 +10,12 @@ QT_TEST(optional_test)
 		public:
 			int data;
 			MYCLASS1() : data(1337) {}
-			optional <int> GetData(bool senddata)
+            vdrift::optional <int> GetData(bool senddata)
 			{
 				if (senddata)
-					return optional <int>(data);
+					return vdrift::optional <int>(data);
 				else
-					return optional <int>();
+					return vdrift::optional <int>();
 			}
 	};
 	
@@ -31,19 +31,19 @@ QT_TEST(optional_test)
 		public:
 			int data;
 			MYCLASS2() : data(1337) {}
-			optional <int> GetData(bool senddata)
+            vdrift::optional <int> GetData(bool senddata)
 			{
 				if (senddata)
 					return data;
 				else
-					return optional <int>();
+					return vdrift::optional <int>();
 			}
-			optional <reseatable_reference <int> > GetRef(bool senddata)
+            vdrift::optional <reseatable_reference <int> > GetRef(bool senddata)
 			{
 				if (senddata)
-					return optional <reseatable_reference <int> > (data);
+					return vdrift::optional <reseatable_reference <int> > (data);
 				else
-					return optional <reseatable_reference <int> > ();
+					return vdrift::optional <reseatable_reference <int> > ();
 			}
 	};
 	

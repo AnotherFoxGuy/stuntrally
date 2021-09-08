@@ -35,7 +35,7 @@ public:
 	}
 
 	///either returns a const BEZIER * to the roadpatch at the given (positive or negative) offset from the supplied bezier (looping around if necessary) or does not return a value if the bezier is not found in this roadstrip.
-	optional <const BEZIER *> FindBezierAtOffset(const BEZIER * bezier, int offset=0) const;
+	vdrift::optional <const BEZIER *> FindBezierAtOffset(const BEZIER * bezier, int offset=0) const;
 
 private:
 	std::list <ROADPATCH> patches;
