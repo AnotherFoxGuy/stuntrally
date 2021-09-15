@@ -26,6 +26,7 @@ jobs:
                   pkg-config \
                   ninja-build \
                   nvidia-cg-toolkit \
+                  libsdl2-dev \
                   libfreetype6-dev \
                   libfreeimage-dev \
                   libzzip-dev \
