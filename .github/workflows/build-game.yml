@@ -36,14 +36,16 @@ jobs:
                   libxt-dev \
                   libxaw7-dev \
                   libxrandr-dev \
-                  libopenjp2-7-dev
+                  libopenjp2-7-dev \
+                  libbullet-dev \
+                  libbullet-extras-dev
 
         shell: bash
 
       - name: Configure
         run: |
           mkdir build && cd build
-          cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=redist .
+          cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DSR_LIB_PREFERENCE=SYSTEM -DCMAKE_INSTALL_PREFIX=redist ..
         shell: bash
 
       - name: Build
