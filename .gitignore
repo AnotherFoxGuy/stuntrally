@@ -3,8 +3,8 @@ data/ghosts/original
 data/tracks
 
 #--  build
-*build
-build*
+/*build/
+/build/*
 Debug*
 Release*
 bin
