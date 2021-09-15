@@ -64,7 +64,7 @@ jobs:
 
   build-msvc:
     name: Windows build
-    runs-on: windows-2016
+    runs-on: windows-latest
     env:
       DXSDK_DIR: C:\apps\Microsoft DirectX SDK\
       BUILD_TOOLS_PATH: C:\apps\build-tools\
