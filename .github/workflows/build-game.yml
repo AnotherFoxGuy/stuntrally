@@ -46,26 +46,14 @@ jobs:
       - name: Configure
         run: |
           mkdir build && cd build
-          cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DSR_LIB_PREFERENCE=SYSTEM -DCMAKE_INSTALL_PREFIX=redist ..
+          cmake -GNinja -DCMAKE_BUILD_TYPE=Release -DSR_LIB_PREFERENCE=SYSTEM ..
         shell: bash
 
       - name: Build
         run: |
           cd build
-          ninja install
+          ninja
         shell: bash
-
-      - name: Copy *.so files
-        run: |
-          cd build
-          cmake -P ../dist/copy_libs.cmake
-        shell: bash
-
-      - name: Upload redist folder
-        uses: actions/upload-artifact@v2
-        with:
-          name: stuntrally-linux
-          path: build/redist
 
       - name: Clean Conan pkgs
         run: conan remove "*" -fsb
@@ -97,9 +85,15 @@ jobs:
       - name: Cache conan packages
         uses: actions/cache@v2.1.6
         with:
-          key: conan-root-${{ hashFiles('cmake/DependenciesConfig.cmake') }}
+          key: conan-${{ hashFiles('cmake/DependenciesConfig.cmake') }}
           path: ~/.conan
 
+      - name: Cache conan packages
+        uses: actions/cache@v2.1.6
+        with:
+          key: conan-short_path-${{ hashFiles('cmake/DependenciesConfig.cmake') }}
+          path: C:/.conan/
+      
       - name: Enable Developer Command Prompt
         uses: ilammy/msvc-dev-cmd@v1.9.0
 
