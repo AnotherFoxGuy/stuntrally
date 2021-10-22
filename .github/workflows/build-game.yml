@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: stuntrally-linux
-          path: redist
+          path: build/redist
 
       - name: Clean Conan pkgs
         run: conan remove "*" -fsb
@@ -119,7 +119,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: stuntrally-win
-          path: redist
+          path: build/redist
 
       - name: Clean Conan pkgs
         run: conan remove "*" -fsb
