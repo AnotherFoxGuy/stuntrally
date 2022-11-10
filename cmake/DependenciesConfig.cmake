@@ -3,8 +3,8 @@ set(CMAKE_THREAD_PREFER_PTHREAD YES)
 find_package(Threads REQUIRED)
 
 if (USE_PACKAGE_MANAGER)
-    conan_add_remote(NAME ror-conan
-            URL https://git.anotherfoxguy.com/api/packages/rorbot/conan
+    conan_add_remote(NAME rigs-of-rods-deps
+            URL https://conan.cloudsmith.io/rigs-of-rods/deps/
             VERIFY_SSL True
             )
 endif ()
