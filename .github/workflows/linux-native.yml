@@ -36,5 +36,7 @@ jobs:
 
       - name: Build StuntRally
         run: |
-          cmake -DCMAKE_BUILD_TYPE=Release .
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
           sudo make -j 2 install
