@@ -20,5 +20,5 @@ jobs:
               libboost-wave-dev libboost-system-dev libboost-filesystem-dev libboost-thread-dev \
               libogg-dev libvorbis-dev libenet-dev libopenal-dev \
               libbullet-dev libbullet-extras-dev libtinyxml-dev libtinyxml2-dev
-          mist install btop -y
+          mist install btop
         
