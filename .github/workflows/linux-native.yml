@@ -11,7 +11,7 @@ jobs:
       - name: Install Dependencies
         run: |
           sudo apt update
-          sudo apt install -y libxrandr-dev libxt-dev libxaw7-dev libzzip-dev \
+          sudo apt install -y libxrandr-dev libxt-dev libxaw7-dev libzzip-dev libpugixml-dev libsdl2-dev \
               mesa-common-dev libgl1-mesa-dev libglu1-mesa-dev libfreetype6-dev \
               libboost-wave-dev libboost-system-dev libboost-filesystem-dev libboost-thread-dev \
               libogg-dev libvorbis-dev libenet-dev libopenal-dev \
