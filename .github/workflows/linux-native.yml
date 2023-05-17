@@ -1,7 +1,7 @@
 name: Linux with Sysdeps
 on:
   push:
-    branches: [master]
+    branches: [master, native-build]
   workflow_dispatch:
 
 jobs:
