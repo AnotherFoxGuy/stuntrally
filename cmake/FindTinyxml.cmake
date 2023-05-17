@@ -1,2 +1,2 @@
 
-find_with_pkg(TinyXML "tinyxml::tinyxml" "tinyxml >= 2.6")
+find_with_pkg(Tinyxml "tinyxml::tinyxml" "tinyxml >= 2.6")
