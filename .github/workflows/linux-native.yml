@@ -15,8 +15,14 @@ jobs:
           wget -qO - 'https://proget.makedeb.org/debian-feeds/prebuilt-mpr.pub' | gpg --dearmor | sudo tee /usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg 1> /dev/null
           echo "deb [arch=amd64 signed-by=/usr/share/keyrings/prebuilt-mpr-archive-keyring.gpg] https://proget.makedeb.org prebuilt-mpr $(lsb_release -cs)" | sudo tee /etc/apt/sources.list.d/prebuilt-mpr.list
           sudo apt update
-          sudo apt install -y makedeb zenity asciidoctor
-          wget "https://minio.anotherfoxguy.com/filedump/una-bin_3.2.0-1_amd64.deb" -O una.deb
-          sudo dpkg -i una.deb
-          una install ogre
-        
+          sudo apt install -y makedeb
+
+      - name: Install ogre
+        run: |    
+          git clone https://mpr.makedeb.org/ogre.git && cd ogre
+          makedeb -si
+
+      - name: Install Dependencies
+        run: |    
+          git clone https://mpr.makedeb.org/mygui-ogre.git && cd mygui-ogre
+          makedeb -si
