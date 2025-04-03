@@ -21,7 +21,7 @@ class StuntRally(ConanFile):
         self.requires("ogre3d/13.6.4@anotherfoxguy/stable")
         self.requires("bullet3/3.25@anotherfoxguy/patched")# Needs a patched to build on windows 
         self.requires("sdl/2.26.1")
-        self.requires("mygui/3.4.1@anotherfoxguy/stable")
+        self.requires("mygui/3.4.2@anotherfoxguy/stable")
         self.requires("ogg/1.3.5")
         self.requires("vorbis/1.3.7")
         self.requires("openal/1.22.2")
