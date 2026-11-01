@@ -622,7 +622,7 @@ void BaseApp::onCursorChange(const std::string &name)
 	if (imgSetPtr != NULL)
 	{
 		MyGUI::ResourceImageSet* imgSet = imgSetPtr->getImageSet();
-		std::string tex_name = imgSet->getIndexInfo(0,0).texture;
+		std::string tex_name = static_cast<std::string>(imgSet->getIndexInfo(0,0).texture);
 		TexturePtr tex = TextureManager::getSingleton().getByName(tex_name);
 
 		//everything looks good, send it to the cursor manager

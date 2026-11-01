@@ -196,11 +196,11 @@ void CGui::UpdImgClr()
 void CGui::imgBtnCarClr(WP img)
 {
 	int i = iCurCar;
-	pSet->gui.car_hue[i] = s2r(img->getUserString("h"));
-	pSet->gui.car_sat[i] = s2r(img->getUserString("s"));
-	pSet->gui.car_val[i] = s2r(img->getUserString("v"));
-	pSet->gui.car_gloss[i]= s2r(img->getUserString("g"));
-	pSet->gui.car_refl[i] = s2r(img->getUserString("r"));
+	pSet->gui.car_hue[i] = s2r(static_cast<String>(img->getUserString("h")));
+	pSet->gui.car_sat[i] = s2r(static_cast<String>(img->getUserString("s")));
+	pSet->gui.car_val[i] = s2r(static_cast<String>(img->getUserString("v")));
+	pSet->gui.car_gloss[i]= s2r(static_cast<String>(img->getUserString("g")));
+	pSet->gui.car_refl[i] = s2r(static_cast<String>(img->getUserString("r")));
 	UpdCarClrSld();
 }
 void CGui::btnCarClrRandom(WP)

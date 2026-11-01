@@ -29,7 +29,7 @@ namespace sh
 		std::stringstream buffer;
 
 		boost::filesystem::path p (sourceFile);
-		p = p.branch_path();
+		p = p.parent_path();
 		mBasePath = p.string();
 
 		buffer << stream.rdbuf();

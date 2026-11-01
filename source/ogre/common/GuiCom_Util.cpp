@@ -188,7 +188,7 @@ void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
 	while (widgets.next())
 	{
 		WP wp = widgets.current();
-		string relativeTo = wp->getUserString("RelativeTo");
+		auto relativeTo = wp->getUserString("RelativeTo");
 
 		if (relativeTo != "")
 		{
@@ -202,10 +202,10 @@ void CGuiCom::doSizeGUI(EnumeratorWidgetPtr widgets)
 			}
 			//  retrieve original size & pos
 			IntPoint origPos;  IntSize origSize;
-			origPos.left = s2i(wp->getUserString("origPosX"));
-			origPos.top  = s2i(wp->getUserString("origPosY"));
-			origSize.width  = s2i(wp->getUserString("origSizeX"));
-			origSize.height = s2i(wp->getUserString("origSizeY"));
+			origPos.left = s2i(static_cast<String>(wp->getUserString("origPosX")));
+			origPos.top  = s2i(static_cast<String>(wp->getUserString("origPosY")));
+			origSize.width  = s2i(static_cast<String>(wp->getUserString("origSizeX")));
+			origSize.height = s2i(static_cast<String>(wp->getUserString("origSizeY")));
 			
 			//  calc & apply new size & pos
 			float sx = relSize.width / 800.f, sy = relSize.height / 600.f;
@@ -272,7 +272,7 @@ void CGuiCom::setToolTips(EnumeratorWidgetPtr widgets)
 		if (tip)  // if has tooltip string
 		{
 			// needed for translation
-			wp->setUserString("tip", LanguageManager::getInstance().replaceTags(wp->getUserString("tip")));
+			wp->setUserString("tip", LanguageManager::getInstance().replaceTags(static_cast<UString>(wp->getUserString("tip"))));
 			wp->setNeedToolTip(true);
 			wp->eventToolTip += newDelegate(this, &CGuiCom::notifyToolTip);
 		}
@@ -298,7 +298,7 @@ void CGuiCom::notifyToolTip(WP wp, const ToolTipInfo &info)
 		mToolTip->setSize(320, 128);  // start size for wrap
 		mToolTipTxt->setSize(320, 128);
 
-		String s = TR(wp->getUserString("tip"));
+		String s = TR(static_cast<UString>(wp->getUserString("tip")));
 		mToolTipTxt->setCaption(s);
 		const IntSize &si = mToolTipTxt->getTextSize();
 
