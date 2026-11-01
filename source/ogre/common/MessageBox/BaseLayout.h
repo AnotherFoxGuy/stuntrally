@@ -209,7 +209,7 @@ namespace wraps
 		template <typename T>
 		T* _createFakeWidget(MyGUI::Widget* _parent)
 		{
-			return static_cast<T*>(_createFakeWidgetT(T::getClassTypeName(), _parent));
+			return static_cast<T*>(_createFakeWidgetT(static_cast<std::string>(T::getClassTypeName()), _parent));
 		}
 
 		MyGUI::Widget* _createFakeWidgetT(const std::string& _typeName, MyGUI::Widget* _parent)

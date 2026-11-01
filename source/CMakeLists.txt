@@ -19,7 +19,7 @@ if (BUILD_GAME OR BUILD_EDITOR)
 
     foreach (ourlib oics paged-geom btOgre)
         add_subdirectory(${ourlib})
-        list(APPEND OURLIBS ${ourlib})
+        list(APPEND OURLIBS ${ourlib} )
     endforeach ()
 
     add_subdirectory(shiny)
@@ -27,7 +27,7 @@ if (BUILD_GAME OR BUILD_EDITOR)
     list(APPEND OURLIBS "shiny.OgrePlatform")
 
     add_subdirectory(sdl4ogre)
-    list(APPEND OURLIBS "sdl4ogre")
+    list(APPEND OURLIBS "sdl4ogre" /usr/lib/libdecor-0.so)
 endif ()
 
 

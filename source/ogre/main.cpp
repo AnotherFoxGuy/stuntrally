@@ -124,13 +124,16 @@ void LoadDefaultSet(SETTINGS* settings, string setFile)
 	pApp->mRoot = root;
 	pGame->app = pApp;
 
+#ifndef OGRE_DEBUG_MODE
 	try
 	{
+#endif
 		#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 			pApp->Run( settings->ogre_dialog || lpCmdLine[0]!=0 );  //Release change-
 		#else
 			pApp->Run( settings->ogre_dialog);
 		#endif
+#ifndef OGRE_DEBUG_MODE
 	}
 	catch (Ogre::Exception& e)
 	{
@@ -140,7 +143,7 @@ void LoadDefaultSet(SETTINGS* settings, string setFile)
 			cerr << "An exception has occured: " << e.getFullDescription().c_str() << endl;
 		#endif
 	}
-
+#endif
 	delete pApp;
 	delete pGame;
 	delete settings;

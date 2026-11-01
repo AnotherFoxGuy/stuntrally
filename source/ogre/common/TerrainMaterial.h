@@ -15,7 +15,7 @@ public:
 	{
 	public:
 		CScene* scn;
-		Profile(CScene* scn1, Ogre::TerrainMaterialGenerator* parent, const Ogre::String& name, const Ogre::String& desc);
+		Profile(CScene* scn1);
 		virtual ~Profile();
 
 		virtual bool isVertexCompressionSupported() const {  return false;  }
@@ -41,4 +41,9 @@ public:
 
 	CScene* scn;
 	TerrainMaterial(CScene* scn1);
+
+	Ogre::MaterialPtr generate(const Ogre::Terrain* terrain) override { return mActiveProfile->generate(terrain); }
+	Ogre::MaterialPtr generateForCompositeMap(const Ogre::Terrain* terrain) override { return mActiveProfile->generateForCompositeMap(terrain); }
+
+	std::unique_ptr<Profile> mActiveProfile;
 };

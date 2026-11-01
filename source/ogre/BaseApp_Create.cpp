@@ -29,6 +29,7 @@
 #include <OgreTimer.h>
 #include <OgreOverlayManager.h>
 #include <OgreTimer.h>
+#include <OgreRTShaderSystem.h>
 #include "Compositor.h"
 
 #include "../shiny/Main/Factory.hpp"
@@ -207,6 +208,7 @@ BaseApp::~BaseApp()
 //-------------------------------------------------------------------------------------
 bool BaseApp::configure()
 {
+	MeshSerializer::enablePre1_8Formats(true);
 	RenderSystem* rs;
 	if (rs = mRoot->getRenderSystemByName(pSet->rendersystem))
 	{
@@ -336,6 +338,11 @@ bool BaseApp::setup()
 
 
 	mSceneMgr = mRoot->createSceneManager("DefaultSceneManager");
+	// register our scene with the RTSS
+	RTShader::ShaderGenerator::initialize();
+	RTShader::ShaderGenerator* shadergen = RTShader::ShaderGenerator::getSingletonPtr();
+
+	shadergen->addSceneManager(mSceneMgr);
 
 	#if OGRE_VERSION >= MYGUI_DEFINE_VERSION(1, 9, 0) 
 	OverlaySystem* pOverlaySystem = new OverlaySystem();
@@ -622,7 +629,7 @@ void BaseApp::onCursorChange(const std::string &name)
 	if (imgSetPtr != NULL)
 	{
 		MyGUI::ResourceImageSet* imgSet = imgSetPtr->getImageSet();
-		std::string tex_name = imgSet->getIndexInfo(0,0).texture;
+		std::string tex_name = static_cast<std::string>(imgSet->getIndexInfo(0,0).texture);
 		TexturePtr tex = TextureManager::getSingleton().getByName(tex_name);
 
 		//everything looks good, send it to the cursor manager

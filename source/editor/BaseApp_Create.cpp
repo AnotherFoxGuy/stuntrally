@@ -419,7 +419,7 @@ void BaseApp::onCursorChange(const string &name)
 	if (imgSetPtr != NULL)
 	{
 		MyGUI::ResourceImageSet* imgSet = imgSetPtr->getImageSet();
-		string tex_name = imgSet->getIndexInfo(0,0).texture;
+		string tex_name = static_cast<string>(imgSet->getIndexInfo(0,0).texture);
 		TexturePtr tex = Ogre::TextureManager::getSingleton().getByName(tex_name);
 
 		//  everything looks good, send it to the cursor manager

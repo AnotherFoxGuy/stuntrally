@@ -87,7 +87,7 @@ void CScene::SetupTerrain()
 		//  combined rgb,a from 2 tex
 		String p = PATHMANAGER::Data() + (app->pSet->tex_size > 0 ? "/terrain/" : "/terrain_s/");
 		String d_d, d_s, n_n, n_h;
-		
+
 		///  diff
 		d_d = l.texFile;  // ends with _d
 		d_s = StringUtil::replaceAll(l.texFile,"_d.","_s.");
@@ -109,7 +109,7 @@ void CScene::SetupTerrain()
 			texLayN[i].LoadTer(p+ n_n, p+ n_h, 1.f);
 		else
 			texLayN[i].LoadTer(p+ "flat_n.png", p+ n_h, 1.f);
-		
+
 		di.layerList[i].textureNames.push_back("layD"+toStr(i));
 		di.layerList[i].textureNames.push_back("layN"+toStr(i));
 	}
@@ -200,20 +200,12 @@ if (bTer)
 		else
 			mTerrainGroup->defineTerrain(0,0, 0.f);
 
+		auto tsm = mTerrainGroup->getTerrainSlots();
+		terrain = tsm[0]->instance;
+
 		//  sync load since we want everything in place when we start
 		mTerrainGroup->loadAllTerrains(true);
 
-	#if OGRE_VERSION_MAJOR >= 13
-		auto tsm = mTerrainGroup->getTerrainSlots();
-		terrain = tsm[0]->instance;
-	#else
-		TerrainGroup::TerrainIterator ti = mTerrainGroup->getTerrainIterator();
-		while (ti.hasMoreElements())
-		{
-			terrain = ti.getNext()->instance;
-			terrain->setVisibilityFlags(RV_Terrain);
-		}
-	#endif
 		mTerrainGroup->freeTemporaryResources();
 	}
 
